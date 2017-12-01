@@ -2,6 +2,7 @@ const bodyParser = require('body-parser');
 const express = require('express');
 const morgan = require('morgan');
 const { mongoose, db, Message } = require('./database')
+const port = process.env.PORT || 3000;
 const app = express();
 
 app.use(morgan('dev'));
@@ -36,4 +37,4 @@ app.post('/api/messages', (req, res) => {
   })
 });
 
-app.listen(3001, () => console.log('Example app listening on port 3001!'));
+app.listen(port, () => console.log('Example app listening on port 3001!'));
