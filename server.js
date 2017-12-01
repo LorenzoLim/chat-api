@@ -37,4 +37,4 @@ app.post('/api/messages', (req, res) => {
   })
 });
 
-app.listen(port, () => console.log('Example app listening on port 3001!'));
+app.listen(port, () => console.log('Example app listening on port: ' + port));
