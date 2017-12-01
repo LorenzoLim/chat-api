@@ -24,9 +24,16 @@ app.get('/api/messages', (req, res) => {
 
 app.post('/api/messages', (req, res) => {
   const { message, username } = req.body
-  console.log( `Message: ${ message } Username: ${ username }`);
-  messages.unshift({message: message, username: username, id: genId()})
-  res.send(messages);
+  // console.log( `Message: ${ message } Username: ${ username }`);
+  // messages.unshift({message: message, username: username, id: genId()})
+  Message.create({
+    username: username,
+    message: message
+  }).then(() => {
+    Message.find().then((messages) =>{
+      res.send(messages.reverse());
+    })
+  })
 });
 
 app.listen(3001, () => console.log('Example app listening on port 3001!'));
