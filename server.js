@@ -1,7 +1,9 @@
 const bodyParser = require('body-parser');
 const express = require('express');
+const morgan = require('morgan');
 const app = express();
 
+app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 
@@ -14,15 +16,15 @@ const messages = [
 ]
 
 app.get('/api/messages', (req, res) => {
+  console.log('Messages Requested!')
   res.send(messages);
 });
 
 app.post('/api/messages', (req, res) => {
-  const message = req.body
-  messages.push(message)
-  messages[messages.length-1].id = genId()
+  const { message, username } = req.body
+  console.log( `Message: ${ message } Username: ${ username }`);
+  messages.unshift({message: message, username: username, id: genId()})
   res.send(messages);
 });
-
 
 app.listen(3001, () => console.log('Example app listening on port 3001!'));
