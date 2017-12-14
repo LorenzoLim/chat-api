@@ -9,8 +9,6 @@ app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 
-let currentId = 2;
-const genId = () => currentId++;
 //
 // const messages = [
 //   {id: 0, username: "Bob", message: "Hello"},
@@ -25,8 +23,6 @@ app.get('/api/messages', (req, res) => {
 
 app.post('/api/messages', (req, res) => {
   const { message, username } = req.body
-  // console.log( `Message: ${ message } Username: ${ username }`);
-  // messages.unshift({message: message, username: username, id: genId()})
   Message.create({
     username: username,
     message: message
