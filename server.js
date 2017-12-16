@@ -20,7 +20,7 @@ app.get('/api/messages', (req, res) => {
     res.send(messages);
   })
 });
-  
+
 app.post('/api/messages', (req, res) => {
   const { message, username } = req.body
   Message.create({
