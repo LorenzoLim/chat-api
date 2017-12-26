@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const db = mongoose.connect(`mongodb://${process.env.USERNAME}:${process.env.PASSWORD}@ds125126.mlab.com:25126/messages`, {useMongoClient:true});
 
 const Schema = mongoose.Schema;
-  
+
 mongoose.Promise = Promise
 
 const Message = mongoose.model('Message', {
