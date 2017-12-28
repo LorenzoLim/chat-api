@@ -5,7 +5,7 @@ const db = mongoose.connect(`mongodb://${process.env.USERNAME}:${process.env.PAS
 const Schema = mongoose.Schema;
 
 mongoose.Promise = Promise
-
+ 
 const Message = mongoose.model('Message', {
   id: Number,
   username: String,
